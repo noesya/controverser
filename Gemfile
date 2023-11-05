@@ -10,7 +10,7 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 gem "rails", "~> 7.0.8"
 gem "rails-i18n"
-gem "dartsass-sprockets"
+gem "sassc-rails"
 gem "simple_form"
 gem "sprockets-rails"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
