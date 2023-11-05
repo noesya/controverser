@@ -1,0 +1,5 @@
+<%= content_for :title, @controversy %>
+
+<%= @controversy.text %>
+
+<%= link_to "Modifier", edit_controversy_path(@controversy), class: 'btn btn-dark' %>

@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: controversies
+#
+#  id         :bigint           not null, primary key
+#  name       :string
+#  slug       :string
+#  text       :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  name: MyString
+  text: MyText
+  slug: MyString
+
+two:
+  name: MyString
+  text: MyText
+  slug: MyString
