@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :controversies
+  resources :controversies, param: :slug, path: ''
   root "controversies#index"
 end
