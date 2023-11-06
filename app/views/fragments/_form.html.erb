@@ -1,0 +1,19 @@
+
+<%= simple_form_for [@controversy, @fragment] do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :url, as: :string %>
+    <%= f.input :source, as: :string %>
+    <%= f.input :image, as: :string %>
+    <%= f.input :full_text %>
+    <%= f.input :summary_short %>
+    <%= f.input :summary_long %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Enregistrer', class: button_classes %>
+  </div>
+<% end %>

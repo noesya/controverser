@@ -5,3 +5,11 @@ fr:
         name: Nom
         text: Texte
         slug: Identifiant
+      fragment:
+        title: Titre
+        url: URL
+        source: Source
+        image: Image
+        full_text: Texte complet
+        summary_short: Résumé court
+        summary_long: Résumé long

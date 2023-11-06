@@ -1,28 +1,27 @@
 class ControversiesController < ApplicationController
   before_action :set_controversy, only: %i[ show edit update destroy ]
 
-  # GET /controversies or /controversies.json
   def index
     @controversies = Controversy.all
   end
 
-  # GET /controversies/1 or /controversies/1.json
   def show
+    @fragments = @controversy.fragments
+    breadcrumbs
   end
 
-  # GET /controversies/new
   def new
     @controversy = Controversy.new
+    breadcrumbs
   end
 
-  # GET /controversies/1/edit
   def edit
+    breadcrumbs
   end
 
-  # POST /controversies or /controversies.json
   def create
     @controversy = Controversy.new(controversy_params)
-
+    breadcrumbs
     respond_to do |format|
       if @controversy.save
         format.html { redirect_to controversy_url(@controversy), notice: "Controversy was successfully created." }
@@ -34,8 +33,8 @@ class ControversiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /controversies/1 or /controversies/1.json
   def update
+    breadcrumbs
     respond_to do |format|
       if @controversy.update(controversy_params)
         format.html { redirect_to controversy_url(@controversy), notice: "Controversy was successfully updated." }
@@ -47,10 +46,9 @@ class ControversiesController < ApplicationController
     end
   end
 
-  # DELETE /controversies/1 or /controversies/1.json
   def destroy
     @controversy.destroy
-
+    breadcrumbs
     respond_to do |format|
       format.html { redirect_to controversies_url, notice: "Controversy was successfully destroyed." }
       format.json { head :no_content }

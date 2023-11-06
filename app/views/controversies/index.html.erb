@@ -1,14 +1,16 @@
 <% content_for :title, 'Un outil libre pour la cartographie de controverses' %>
 
 <% @controversies.each do |controversy| %>
-  <article class="row controversy border-top py-4">
-    <div class="col-lg-6">
-      <h2>
-        <%= link_to controversy, controversy, class: 'text-black' %>
-      </h2>
+  <article class="controversy border-top py-4">
+    <div class="row">
+      <div class="col-lg-6">
+        <h2>
+          <%= link_to controversy, controversy, class: 'text-black' %>
+        </h2>
+      </div>
+      <div class="col-lg-3 pt-2">x textes</div>
+      <div class="col-lg-3 pt-2">x mots-clés</div>
     </div>
-    <div class="col-lg-3 pt-2">x textes</div>
-    <div class="col-lg-3 pt-2">x mots-clés</div>
   </article>
 <% end %>
 <article class="controversy border-top border-bottom py-4">

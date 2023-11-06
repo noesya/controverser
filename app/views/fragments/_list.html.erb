@@ -1,0 +1,5 @@
+<% @fragments.each do |fragment| %>
+  <article class="row">
+    <h2><%= link_to fragment.title, controversy_fragment_path(@controversy.slug, fragment), class: 'text-black' %></h2>
+  </article>
+<% end %>

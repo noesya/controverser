@@ -1,0 +1,26 @@
+<%= content_for :title, @fragment %>
+
+<div class="row">
+  <div class="col-lg-8">
+    <div class="row">
+      <div class="col-lg-6">
+        <p><%= Fragment.human_attribute_name(:summary_short) %></p>
+        <p class="lead"><%= @fragment.summary_short %></p>
+      </div>
+      <div class="col-lg-6">
+        <p><%= Fragment.human_attribute_name(:summary_long) %></p>
+        <p class="lead"><%= @fragment.summary_long %></p>
+      </div>
+    </div>
+    <p class="mt-5"><%= Fragment.human_attribute_name(:source) %></p>
+    <p class="lead"><%= @fragment.source %></p>
+    <p class="mt-5"><%= Fragment.human_attribute_name(:url) %></p>
+    <p class="lead"><%= link_to @fragment.url, @fragment.url, target: :_blank %></p>
+  </div>
+  <div class="col-lg-4">
+    <p><%= Fragment.human_attribute_name(:visual) %></p>
+    <%= image_tag @fragment.image, class: 'img-fluid' %>
+  </div>
+</div>
+
+<%= link_to "Modifier", edit_controversy_fragment_path(@controversy.slug, @fragment), class: button_classes %>

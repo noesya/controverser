@@ -1,6 +1,11 @@
 <header class="container-fluid py-4">
-  <%= link_to root_path do %>
-    <%= image_tag 'logo.svg', alt: 'Controverser' %>
-  <% end %>
+  <div class="logo-and-breadcrumbs">
+    <%= link_to root_path, class: 'logo' do %>
+      <%= image_tag 'logo.svg', alt: 'Controverser' %>
+    <% end %>
+    <div class="breadcrumbs">
+      <%= render_breadcrumbs separator: ' / ' %>
+    </div>
+  </div>
   <h1><%= yield :title %></h1>
 </header>

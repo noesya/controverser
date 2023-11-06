@@ -1,0 +1,5 @@
+<% content_for :title, 'Textes' %>
+
+<%= render 'texts/list', texts: @texts %>
+
+<%= link_to "Ajouter un texte", new_controversy_text_path, class: button_classes %>
