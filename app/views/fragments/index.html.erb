@@ -1,5 +1,5 @@
-<% content_for :title, 'Textes' %>
+<% content_for :title, 'Fragments' %>
 
-<%= render 'texts/list', texts: @texts %>
+<%= render 'fragments/list', fragments: @fragments %>
 
-<%= link_to "Ajouter un texte", new_controversy_text_path, class: button_classes %>
+<%= link_to "Ajouter un fragment", new_controversy_fragment_path, class: button_classes %>

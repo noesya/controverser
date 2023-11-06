@@ -11,9 +11,9 @@ class FragmentsController < ControversyController
   end
 
   def new
-    @fragment = Text.new
+    @fragment = Fragment.new
     breadcrumbs
-    add_breadcrumb 'Ajouter un texte'
+    add_breadcrumb 'Ajouter un fragment'
   end
 
   def edit
