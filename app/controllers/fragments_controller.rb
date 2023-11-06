@@ -24,37 +24,26 @@ class FragmentsController < ControversyController
     breadcrumbs
     @fragment = Fragment.new(fragment_params)
     @fragment.controversy = @controversy
-    respond_to do |format|
-      if @fragment.save
-        format.html { redirect_to [@controversy, @text], notice: "Text was successfully created." }
-        format.json { render :show, status: :created, location: @text }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @text.errors, status: :unprocessable_entity }
-      end
+    if @fragment.save
+      redirect_to [@controversy, @text], notice: "Text was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
     breadcrumbs
-    respond_to do |format|
-      if @fragment.update(text_params)
-        format.html { redirect_to [@controversy, @text], notice: "Text was successfully updated." }
-        format.json { render :show, status: :ok, location: @text }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @text.errors, status: :unprocessable_entity }
-      end
+    if @fragment.update(fragment_params)
+      redirect_to [@controversy, @text], notice: "Text was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @fragment.destroy
     breadcrumbs
-    respond_to do |format|
-      format.html { redirect_to controversy_texts_url, notice: "Text was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to controversy_texts_url, notice: "Text was successfully destroyed."
   end
 
   protected
