@@ -57,6 +57,6 @@ class ConceptsController < ControversyController
   end
 
   def concept_params
-    params.require(:concept).permit(:name, :slug, :description)
+    params.require(:concept).permit(:name, :slug, :description, fragment_ids: [])
   end
 end

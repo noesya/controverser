@@ -25,7 +25,7 @@ class FragmentsController < ControversyController
     @fragment = Fragment.new(fragment_params)
     @fragment.controversy = @controversy
     if @fragment.save
-      redirect_to [@controversy, @text], notice: "Text was successfully created."
+      redirect_to [@controversy, @fragment], notice: "Text was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class FragmentsController < ControversyController
   def update
     breadcrumbs
     if @fragment.update(fragment_params)
-      redirect_to [@controversy, @text], notice: "Text was successfully updated."
+      redirect_to [@controversy, @fragment], notice: "Text was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -59,6 +59,7 @@ class FragmentsController < ControversyController
   end
 
   def fragment_params
-    params.require(:fragment).permit(:title, :image, :full_text, :summary_short, :summary_long, :url, :source)
+    params.require(:fragment)
+          .permit(:title, :image, :full_text, :summary_short, :summary_long, :url, :source, concept_ids: [])
   end
 end

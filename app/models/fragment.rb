@@ -29,6 +29,10 @@ class Fragment < ApplicationRecord
   belongs_to :controversy
   has_and_belongs_to_many :concepts
 
+  validates_uniqueness_of :slug, scope: :controversy_id
+
+  scope :ordered, -> { order(:title) }
+
   def to_param
     slug
   end

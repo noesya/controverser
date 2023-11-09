@@ -16,6 +16,10 @@
     <p class="lead"><%= @fragment.source %></p>
     <p class="mt-5"><%= Fragment.human_attribute_name(:url) %></p>
     <p class="lead"><%= link_to @fragment.url, @fragment.url, target: :_blank %></p>
+    
+    <p class="mt-5"><%= Fragment.human_attribute_name(:concepts) %></p>
+    <%= render 'concepts/list', concepts: @fragment.concepts %>
+
   </div>
   <div class="col-lg-4">
     <p><%= Fragment.human_attribute_name(:visual) %></p>

@@ -17,6 +17,7 @@ class Controversy < ApplicationRecord
 
   validates_presence_of :name
   validates_uniqueness_of :name
+  validates_uniqueness_of :slug
 
   def to_param
     slug
