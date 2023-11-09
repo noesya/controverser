@@ -43,13 +43,14 @@ class FragmentsController < ControversyController
   def destroy
     @fragment.destroy
     breadcrumbs
-    redirect_to controversy_texts_url, notice: "Text was successfully destroyed."
+    redirect_to controversy_fragments_url, notice: "Text was successfully destroyed."
   end
 
   protected
 
   def breadcrumbs
     super
+    add_breadcrumb 'Fragments', controversy_fragments_path
     add_breadcrumb @fragment, [@controversy, @fragment] if @fragment.present? && @fragment.persisted?
   end
 

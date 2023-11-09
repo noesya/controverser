@@ -8,8 +8,8 @@
           <%= link_to controversy, controversy, class: 'text-black' %>
         </h2>
       </div>
-      <div class="col-lg-3 pt-2">x textes</div>
-      <div class="col-lg-3 pt-2">x mots-clés</div>
+      <div class="col-lg-3 pt-2"><%= controversy.fragments.count %> fragments</div>
+      <div class="col-lg-3 pt-2"><%= controversy.concepts.count %> concepts</div>
     </div>
   </article>
 <% end %>

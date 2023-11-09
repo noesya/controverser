@@ -1,39 +1,34 @@
 # == Schema Information
 #
-# Table name: fragments
+# Table name: concepts
 #
 #  id             :bigint           not null, primary key
-#  full_text      :text
-#  image          :text
+#  description    :text
+#  name           :string
 #  slug           :string
-#  source         :text
-#  summary_long   :text
-#  summary_short  :text
-#  title          :string
-#  url            :text
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  controversy_id :bigint           not null
 #
 # Indexes
 #
-#  index_fragments_on_controversy_id  (controversy_id)
+#  index_concepts_on_controversy_id  (controversy_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (controversy_id => controversies.id)
 #
-class Fragment < ApplicationRecord
+class Concept < ApplicationRecord
   include WithSlug
 
   belongs_to :controversy
-  has_and_belongs_to_many :concepts
+  has_and_belongs_to_many :fragments
 
   def to_param
     slug
   end
 
   def to_s
-    "#{title}"
+    "#{name}"
   end
 end

@@ -1,6 +1,10 @@
 fr:
   activerecord:
     attributes:
+      concept:
+        name: Nom
+        description: Description
+        slug: Identifiant
       controversy:
         name: Nom
         text: Texte

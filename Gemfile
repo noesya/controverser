@@ -5,10 +5,10 @@ ruby "3.2.2"
 
 gem "bootsnap", require: false
 gem "bootstrap"
+gem "bootstrap-icons-helper"
 gem "breadcrumbs_on_rails"
-gem "jbuilder"
-gem "pg", "~> 1.1"
-gem "puma", "~> 5.0"
+gem "pg"
+gem "puma"
 gem "rails", "~> 7.0.8"
 gem "rails-i18n"
 gem "sassc-rails"
@@ -23,6 +23,7 @@ end
 group :development do
   gem "annotate"
   gem "web-console"
+  gem "byebug"
 end
 
 group :test do

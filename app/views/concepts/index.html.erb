@@ -1,0 +1,8 @@
+<% content_for :title, 'Concepts' %>
+
+<%= render 'concepts/list', concepts: @concepts %>
+
+<article class="border-top border-bottom py-4">
+  <h2><%= link_to "Ajouter un concept", 
+          new_controversy_concept_path %></h2>
+</article>

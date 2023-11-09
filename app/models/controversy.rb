@@ -13,6 +13,7 @@ class Controversy < ApplicationRecord
   include WithSlug
 
   has_many :fragments
+  has_many :concepts
 
   validates_presence_of :name
   validates_uniqueness_of :name

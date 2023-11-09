@@ -1,0 +1,8 @@
+<% @concepts.each do |concept| %>
+  <article class="border-top position-relative py-4">
+    <h2><%= link_to concept, 
+                    controversy_concept_path(@controversy.slug, concept), 
+                    class: 'text-black stretched-link' %></h2>
+    <p><%= concept.description %></p>
+  </article>
+<% end %>

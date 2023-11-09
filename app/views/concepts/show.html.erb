@@ -1,0 +1,11 @@
+<%= content_for :title, @concept %>
+
+<% if @concept.description.present? %>
+  <p><%= @concept.description %></p>
+<% end %>
+
+<%= render 'fragments/list', fragments: @fragments %>
+
+<%= link_to "Modifier", 
+            edit_controversy_concept_path(@controversy.slug, @concept), 
+            class: button_classes %>

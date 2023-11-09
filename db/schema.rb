@@ -10,9 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_06_114756) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_09_080841) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "concepts", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.text "description"
+    t.bigint "controversy_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["controversy_id"], name: "index_concepts_on_controversy_id"
+  end
+
+  create_table "concepts_fragments", id: false, force: :cascade do |t|
+    t.bigint "fragment_id", null: false
+    t.bigint "concept_id", null: false
+  end
 
   create_table "controversies", force: :cascade do |t|
     t.string "name"
@@ -37,5 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_06_114756) do
     t.index ["controversy_id"], name: "index_fragments_on_controversy_id"
   end
 
+  add_foreign_key "concepts", "controversies"
   add_foreign_key "fragments", "controversies"
 end

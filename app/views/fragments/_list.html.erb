@@ -1,5 +1,19 @@
 <% @fragments.each do |fragment| %>
-  <article class="row">
-    <h2><%= link_to fragment.title, controversy_fragment_path(@controversy.slug, fragment), class: 'text-black' %></h2>
+  <article class="border-top position-relative py-4">
+    <div class="row">
+      <div class="col-lg-2">
+        <% if fragment.image.present? %>
+          <div class="ratio ratio-4x3">
+            <%= image_tag fragment.image, class: 'img-fluid object-fit-cover' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-lg-6">
+        <h2><%= link_to fragment.title, 
+                        controversy_fragment_path(@controversy.slug, fragment), 
+                        class: 'text-black stretched-link' %></h2>
+        <p><%= fragment.summary_short %></p>
+      </div>
+    </div>
   </article>
 <% end %>
