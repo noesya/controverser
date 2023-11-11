@@ -3,6 +3,9 @@
 # Table name: fragments
 #
 #  id             :bigint           not null, primary key
+#  analyze_answer :text
+#  analyzed       :boolean
+#  analyzed_on    :datetime
 #  full_text      :text
 #  image          :text
 #  published_at   :date
@@ -50,7 +53,35 @@ class Fragment < ApplicationRecord
     slug
   end
 
+  def analyzed?
+    analyze_answer.present?
+  end
+
+  def analyze_with_chatgpt!
+    self.update_column :analyze_answer, chatgpt.answer unless analyzed?
+    self.update_column :summary_long, anwser_as_json['summary_long']
+    self.update_column :summary_short, anwser_as_json['summary_short']
+    anwser_as_json['concepts'].each do |concept_name|
+      concept_slug = concept_name.parameterize
+      concept = controversy.concepts.where(slug: concept_slug).first_or_create do |concept|
+        concept.name = concept_name
+      end
+      concepts << concept unless concept.in?(concepts)
+    end
+    save
+  end
+
   def to_s
     "#{title}"
+  end
+
+  protected
+
+  def chatgpt
+    @chatgpt ||= Chatgpt.new title, full_text
+  end
+
+  def anwser_as_json
+    @anwser_as_json ||= JSON.parse analyze_answer
   end
 end

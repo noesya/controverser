@@ -2,7 +2,7 @@ module WithSlug
   extend ActiveSupport::Concern
 
   included do
-    before_save :set_slug
+    before_validation :set_slug
   end
 
   protected

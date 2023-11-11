@@ -5,6 +5,7 @@ class ControversyController < ApplicationController
 
   def breadcrumbs
     super
+    add_breadcrumb @controversy, @controversy
   end
 
   def load_controversy

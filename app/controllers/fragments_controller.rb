@@ -1,5 +1,5 @@
 class FragmentsController < ControversyController
-  before_action :set_fragment, only: %i[ show edit update destroy ]
+  before_action :set_fragment, only: %i[ show edit analyze update destroy ]
 
   def index
     @fragments = @controversy.fragments
@@ -16,6 +16,11 @@ class FragmentsController < ControversyController
     add_breadcrumb 'Ajouter un fragment'
   end
 
+  def analyze
+    @fragment.analyze_with_chatgpt!
+    redirect_to [@controversy, @fragment], notice: "Fragment analysé"
+  end
+
   def edit
     breadcrumbs
   end
@@ -25,7 +30,7 @@ class FragmentsController < ControversyController
     @fragment = Fragment.new(fragment_params)
     @fragment.controversy = @controversy
     if @fragment.save
-      redirect_to [@controversy, @fragment], notice: "Text was successfully created."
+      redirect_to [@controversy, @fragment], notice: "Fragment créé"
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,7 +39,7 @@ class FragmentsController < ControversyController
   def update
     breadcrumbs
     if @fragment.update(fragment_params)
-      redirect_to [@controversy, @fragment], notice: "Text was successfully updated."
+      redirect_to [@controversy, @fragment], notice: "Fragment modifié"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,7 +48,7 @@ class FragmentsController < ControversyController
   def destroy
     @fragment.destroy
     breadcrumbs
-    redirect_to controversy_fragments_url, notice: "Text was successfully destroyed."
+    redirect_to controversy_fragments_url, notice: "Fragment supprimé"
   end
 
   protected

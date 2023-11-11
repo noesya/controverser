@@ -56,13 +56,18 @@ class ControversiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_controversy
-      @controversy = Controversy.find_by(slug: params[:slug])
-    end
+  def breadcrumbs
+    super
+    add_breadcrumb @controversy, @controversy if @controversy
+  end
 
-    # Only allow a list of trusted parameters through.
-    def controversy_params
-      params.require(:controversy).permit(:name, :text, :slug)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_controversy
+    @controversy = Controversy.find_by(slug: params[:slug])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def controversy_params
+    params.require(:controversy).permit(:name, :text, :slug)
+  end
 end
