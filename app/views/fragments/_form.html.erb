@@ -1,8 +1,6 @@
-
 <%= simple_form_for [@controversy, @fragment] do |f| %>
   <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>  
   <div class="row">
     <div class="col-lg-4">
       <%= f.input :title %>
@@ -21,7 +19,6 @@
                         as: :check_boxes %>
     </div>
   </div>
-
   <div class="form-actions">
     <%= f.button :submit, 'Enregistrer', class: button_classes %>
   </div>

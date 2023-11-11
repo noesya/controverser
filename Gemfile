@@ -7,6 +7,7 @@ gem "bootsnap", require: false
 gem "bootstrap"
 gem "bootstrap-icons-helper"
 gem "breadcrumbs_on_rails"
+gem "curation"
 gem "pg"
 gem "puma"
 gem "rails", "~> 7.0.8"

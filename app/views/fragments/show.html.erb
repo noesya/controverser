@@ -12,14 +12,20 @@
         <p class="lead"><%= @fragment.summary_long %></p>
       </div>
     </div>
+    
     <p class="mt-5"><%= Fragment.human_attribute_name(:source) %></p>
     <p class="lead"><%= @fragment.source %></p>
+
     <p class="mt-5"><%= Fragment.human_attribute_name(:url) %></p>
     <p class="lead"><%= link_to @fragment.url, @fragment.url, target: :_blank %></p>
     
     <p class="mt-5"><%= Fragment.human_attribute_name(:concepts) %></p>
     <%= render 'concepts/list', concepts: @fragment.concepts %>
 
+    <p class="mt-5"><%= Fragment.human_attribute_name(:full_text) %></p>
+    <div class="lead">
+      <%= simple_format @fragment.full_text %>
+    </div>
   </div>
   <div class="col-lg-4">
     <p><%= Fragment.human_attribute_name(:visual) %></p>

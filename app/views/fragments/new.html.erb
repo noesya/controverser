@@ -1,2 +1,41 @@
 <%= content_for :title, 'Ajouter un fragment' %>
-<%= render "form", fragment: @fragment %>
+
+<ul class="nav nav-tabs" id="tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" 
+            id="import-tab" 
+            data-bs-toggle="tab" 
+            data-bs-target="#import-tab-pane" 
+            type="button" 
+            role="tab" 
+            aria-controls="import-tab-pane" 
+            aria-selected="true">
+      Import Web
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" 
+            id="form-tab" 
+            data-bs-toggle="tab" 
+            data-bs-target="#form-tab-pane" 
+            type="button" 
+            role="tab" 
+            aria-controls="form-tab-pane" 
+            aria-selected="false">
+      Formulaire complet
+    </button>
+  </li>
+</ul>
+<div class="tab-content" id="tabContent">
+  <div class="tab-pane fade show active pt-4" id="import-tab-pane" role="tabpanel" aria-labelledby="import-tab" tabindex="0">
+    <%= simple_form_for [@controversy, @fragment] do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>  
+      <%= f.input :url_import, as: :string %>
+      <%= f.button :submit, 'Enregistrer', class: button_classes %>
+    <% end %>
+  </div>
+  <div class="tab-pane fade pt-4" id="form-tab-pane" role="tabpanel" aria-labelledby="form-tab" tabindex="0">
+    <%= render 'form', fragment: @fragment %>
+  </div>
+</div>
