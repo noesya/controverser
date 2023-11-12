@@ -9,3 +9,9 @@
 <%= link_to "Modifier", 
             edit_controversy_concept_path(@controversy.slug, @concept), 
             class: button_classes %>
+
+<%= link_to "Supprimer", 
+            controversy_concept_path(@controversy.slug, @concept), 
+            class: button_classes_danger, 
+            method: :delete, 
+            data: { confirm: 'Confirmer la suppression ?' } %>

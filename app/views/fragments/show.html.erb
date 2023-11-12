@@ -36,6 +36,13 @@
 <%= link_to "Modifier", 
             edit_controversy_fragment_path(@controversy.slug, @fragment), 
             class: button_classes %>
+
+<%= link_to "Supprimer", 
+            controversy_fragment_path(@controversy.slug, @fragment), 
+            class: button_classes_danger, 
+            method: :delete, 
+            data: { confirm: 'Confirmer la suppression ?' } %>
+
 <%= link_to "Analyser avec ChatGPT", 
             analyze_controversy_fragment_path(@controversy.slug, @fragment), 
             class: button_classes,
