@@ -39,8 +39,8 @@ class Chatgpt
   def response
     @response ||= client.chat(
       parameters: {
-        model: "gpt-4",
-        # model: "gpt-3.5-turbo-16k",
+        # model: "gpt-4",
+        model: "gpt-3.5-turbo-16k",
         messages: [
           {
             "role": "system", 
