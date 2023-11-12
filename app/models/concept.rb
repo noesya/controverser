@@ -26,7 +26,11 @@ class Concept < ApplicationRecord
 
   validates_uniqueness_of :slug, scope: :controversy_id
 
-  scope :ordered, -> { order(:name) }
+  scope :ordered, -> { 
+    left_joins(:fragments)
+    .group(:id)
+    .order('COUNT(fragments.id) DESC') 
+  }
 
   def to_param
     slug

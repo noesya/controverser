@@ -2,7 +2,7 @@ class FragmentsController < ControversyController
   before_action :set_fragment, only: %i[ show edit analyze update destroy ]
 
   def index
-    @fragments = @controversy.fragments
+    @fragments = @controversy.fragments.ordered
     breadcrumbs
   end
 

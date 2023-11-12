@@ -2,7 +2,7 @@ class ConceptsController < ControversyController
   before_action :set_concept, only: %i[ show edit update destroy ]
 
   def index
-    @concepts = @controversy.concepts
+    @concepts = @controversy.concepts.ordered
     breadcrumbs
   end
   

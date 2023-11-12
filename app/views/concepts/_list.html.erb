@@ -1,7 +1,20 @@
-<% concepts.each do |concept| %>
-  <article class="border-top position-relative py-4">
-    <h2><%= link_to concept, 
-                    controversy_concept_path(@controversy.slug, concept), 
-                    class: 'text-black stretched-link' %></h2>
-  </article>
-<% end %>
+<div class="row">
+  <% concepts.each do |concept| %>
+    <div class="col-lg-4">
+      <div class="card mb-5">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <%= link_to concept, 
+                        controversy_concept_path(@controversy.slug, concept), 
+                        class: 'text-black stretched-link' %>
+          </h2>
+          <p class="mb-0">
+            Présent dans 
+            <%= concept.fragments.count %>
+            fragment<%= 's' if concept.fragments.many? %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
