@@ -65,6 +65,6 @@ class FragmentsController < ControversyController
 
   def fragment_params
     params.require(:fragment)
-          .permit(:title, :image, :full_text, :summary_short, :summary_long, :url, :url_import, :source, concept_ids: [])
+          .permit(:title, :image, :full_text, :summary_short, :summary_long, :url, :url_import, :source, :analyze_answer, concept_ids: [])
   end
 end

@@ -12,8 +12,10 @@ fr:
       fragment:
         title: Titre
         url: URL
+        url_import: URL à importer
         source: Source
         image: Image
         full_text: Texte complet
         summary_short: Résumé court
         summary_long: Résumé long
+        analyze_answer: Réponse de ChatGPT

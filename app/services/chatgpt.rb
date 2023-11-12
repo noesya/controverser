@@ -52,7 +52,11 @@ class Chatgpt
           },
           {
             "role": "user",
-            "content": "Peux-tu me donner au format json (sans texte avant et après, juste le json brut) le résumé en 100 signes (variable summary_short), le résumé en 500 signes (variable summary_long) et les concepts (variable concepts) ?",
+            "content": "Peux-tu me donner au format json 
+              (sans texte avant et après, juste le json brut, ou si ce n'est pas possible le json dans un bloc de code markdown, avec ```json au début et ``` à la fin) 
+              le résumé en 100 signes sous la forme d'une phrase (variable summary_short), 
+              le résumé en 500 signes (variable summary_long) 
+              et les concepts (variable concepts) ?",
           },
         ]
       }

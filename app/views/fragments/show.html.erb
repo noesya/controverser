@@ -26,6 +26,9 @@
     <div class="lead">
       <%= simple_format @fragment.full_text %>
     </div>
+
+    <p class="mt-5"><%= Fragment.human_attribute_name(:analyze_answer) %></p>
+    <p><%= @fragment.analyze_answer %><p>
   </div>
   <div class="col-lg-4">
     <p><%= Fragment.human_attribute_name(:visual) %></p>
@@ -46,4 +49,5 @@
 <%= link_to "Analyser avec ChatGPT", 
             analyze_controversy_fragment_path(@controversy.slug, @fragment), 
             class: button_classes,
-            method: :post %>
+            method: :post,
+            data: { confirm: 'Confirmer l’analyse ? C’est un peu long, ça coûte de l’énergie et de l’argent, et parfois ça échoue.' } %>

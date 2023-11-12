@@ -82,6 +82,6 @@ class Fragment < ApplicationRecord
   end
 
   def anwser_as_json
-    @anwser_as_json ||= JSON.parse analyze_answer
+    @anwser_as_json ||= JSON.parse analyze_answer.gsub("\n", '')
   end
 end
