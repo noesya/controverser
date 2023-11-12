@@ -19,3 +19,8 @@ fr:
         summary_short: Résumé court
         summary_long: Résumé long
         analyze_answer: Réponse de ChatGPT
+  
+  simple_form:
+    hints:
+      fragment:
+        url_import: 'L’import ne fonctionne pas toujours, notamment s’il y a des Captchas. Si ça ne fonctionne pas, il faut créer le fragment en copiant-collant le texte.'
