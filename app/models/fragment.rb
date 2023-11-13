@@ -61,10 +61,10 @@ class Fragment < ApplicationRecord
     self.update_column :analyze_answer, chatgpt.answer unless analyzed?
     self.update_column :summary_long, anwser_as_json['summary_long']
     self.update_column :summary_short, anwser_as_json['summary_short']
-    anwser_as_json['concepts'].each do |concept_name|
-      concept_slug = concept_name.parameterize
+    anwser_as_json['concepts'].each do |concept_title|
+      concept_slug = concept_title.parameterize
       concept = controversy.concepts.where(slug: concept_slug).first_or_create do |concept|
-        concept.name = concept_name
+        concept.title = concept_title
       end
       concepts << concept unless concept.in?(concepts)
     end
