@@ -1,13 +1,13 @@
 <%= content_for :title, @controversy %>
 
 <% if @controversy.subtitle.present? %>
-  <h2 class="mb-5"><%= @controversy.subtitle %></h2>
+  <h2 class="mb-5 mt-n5"><%= @controversy.subtitle %></h2>
 <% end %>
 
 <div class="row">
   <div class="offset-lg-2 col-lg-6">
     <% if @controversy.text.present? %>
-      <div class="lead">
+      <div class="mt-5 lead">
         <%= @controversy.text %>
       </div>
     <% end %>
