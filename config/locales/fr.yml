@@ -2,11 +2,12 @@ fr:
   activerecord:
     attributes:
       concept:
-        name: Nom
+        title: Titre
         description: Description
         slug: Identifiant
       controversy:
-        name: Nom
+        title: Titre
+        subtitle: Sous-titre
         text: Texte
         slug: Identifiant
       fragment:
