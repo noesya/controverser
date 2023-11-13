@@ -3,16 +3,29 @@ body
 
 header,
 main
+    position: relative
     background: white
+
+header
+    z-index: 2
+
+main
     z-index: 1
+    box-shadow: 0px 10px 20px 5px rgba(0,0,0,0.2)
+
+h1,
+h2,
+h3
+    font-family: "YoungSerif", serif
+    color: $primary
 
 h1
     margin-top: 100px
-    margin-bottom: 100px
-    font-family: "YoungSerif", serif
+    margin-bottom: 40px
+    line-height: 100%
 
 h2
-    font-weight: bold
+    line-height: 120%
 
 a
     text-decoration: none

@@ -3,9 +3,10 @@
 # Table name: controversies
 #
 #  id         :bigint           not null, primary key
-#  name       :string
 #  slug       :string
+#  subtitle   :string
 #  text       :text
+#  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -15,8 +16,8 @@ class Controversy < ApplicationRecord
   has_many :fragments
   has_many :concepts
 
-  validates_presence_of :name
-  validates_uniqueness_of :name
+  validates_presence_of :title
+  validates_uniqueness_of :title
   validates_uniqueness_of :slug
 
   def to_param
@@ -24,6 +25,6 @@ class Controversy < ApplicationRecord
   end
 
   def to_s
-    "#{name}"
+    "#{title}"
   end
 end

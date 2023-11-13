@@ -1,14 +1,29 @@
 <%= content_for :title, @controversy %>
 
-<%#= link_to "Modifier", edit_controversy_path(@controversy), class: button_classes %>
+<% if @controversy.subtitle.present? %>
+  <h2 class="mb-5"><%= @controversy.subtitle %></h2>
+<% end %>
 
-<div class="mb-5 lead">
-  <%= link_to controversy_fragments_path(@controversy), class: 'pe-5' do %>
-    Fragments
-    <%= bootstrap_icon "arrow-right" %>
-  <% end %>
-  <%= link_to controversy_concepts_path(@controversy) do %>
-    Concepts
-    <%= bootstrap_icon "arrow-right" %>
-  <% end %>
+<div class="row">
+  <div class="offset-lg-2 col-lg-6">
+    <% if @controversy.text.present? %>
+      <div class="lead">
+        <%= @controversy.text %>
+      </div>
+    <% end %>
+
+    <div class="my-5 lead">
+      <%= link_to controversy_fragments_path(@controversy), class: 'pe-5' do %>
+        Fragments
+        <%= bootstrap_icon "arrow-right" %>
+      <% end %>
+      <%= link_to controversy_concepts_path(@controversy) do %>
+        Concepts
+        <%= bootstrap_icon "arrow-right" %>
+      <% end %>
+    </div>
+    
+    <%= link_to "Modifier", edit_controversy_path(@controversy), class: button_classes %>
+  
+  </div>
 </div>
