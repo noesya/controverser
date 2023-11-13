@@ -26,28 +26,27 @@ class FragmentsController < ControversyController
   end
 
   def create
-    breadcrumbs
     @fragment = Fragment.new(fragment_params)
     @fragment.controversy = @controversy
     if @fragment.save
       redirect_to [@controversy, @fragment], notice: "Fragment créé"
     else
+      breadcrumbs
       render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    breadcrumbs
     if @fragment.update(fragment_params)
       redirect_to [@controversy, @fragment], notice: "Fragment modifié"
     else
+      breadcrumbs
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @fragment.destroy
-    breadcrumbs
     redirect_to controversy_fragments_url, notice: "Fragment supprimé"
   end
 

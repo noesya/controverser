@@ -32,7 +32,7 @@
   </div>
   <div class="col-lg-4">
     <p><%= Fragment.human_attribute_name(:visual) %></p>
-    <%= image_tag @fragment.image, class: 'img-fluid' %>
+    <%= image_tag @fragment.image, class: 'img-fluid' if @fragment.image.present? %>
   </div>
 </div>
 
