@@ -1,5 +1,4 @@
-
-<%= simple_form_for(@controversy) do |f| %>
+<%= simple_form_for controversy do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -7,13 +6,10 @@
     <div class="col-lg-6">
       <%= f.input :title %>
       <%= f.input :subtitle %>
+      <%= f.button :submit, 'Enregistrer', class: button_classes %>
     </div>
     <div class="col-lg-6">
-      <%= f.input :text %>
+      <%= f.input :text, input_html: { rows: 10 } %>
     </div>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, 'Enregistrer', class: button_classes %>
   </div>
 <% end %>
