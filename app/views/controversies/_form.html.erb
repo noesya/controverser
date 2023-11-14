@@ -13,3 +13,32 @@
     </div>
   </div>
 <% end %>
+
+
+<div class="ce-example">
+  <div class="ce-example__content _ce-example__content--small">
+    <div id="editorjs"></div>
+  </div>
+  <div class="ce-example__output">
+    <pre class="ce-example__output-content" id="output"></pre>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://raw.githubusercontent.com/codex-team/editor.js/next/public/assets/demo.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+
+<script>
+var editor = new EditorJS({
+  holder: 'editorjs',
+  tools: {
+    header: Header,
+    image: SimpleImage,
+    quote: Quote
+  },
+  data: <%= raw controversy.data.to_json %>
+});
+</script>

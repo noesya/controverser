@@ -3,6 +3,7 @@
 # Table name: controversies
 #
 #  id         :bigint           not null, primary key
+#  data       :jsonb
 #  slug       :string
 #  subtitle   :string
 #  text       :text
