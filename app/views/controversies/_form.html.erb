@@ -2,30 +2,20 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="row">
-    <div class="col-lg-6">
-      <%= f.input :title %>
-      <%= f.input :subtitle %>
-      <%= f.button :submit, 'Enregistrer', class: button_classes %>
-    </div>
-    <div class="col-lg-6">
-      <%= f.input :text, input_html: { rows: 10 } %>
-      <%= f.input :data, input_html: { id: 'data' } %>
+  <h1><%= f.input_field :title, placeholder: 'Titre' %></h1>
+  <h2><%= f.input_field :subtitle, placeholder: 'Sous-titre' %></h2>
+  <div class="row controversy-editor">
+    <div class="offset-lg-2 col-lg-6">
+      <div class="d-none">
+        <%= f.input :data, input_html: { id: 'editorjs-data' } %>
+      </div>
+      <div id="editorjs"></div>
+      <div class="fixed-area">
+        <%= f.button :submit, 'Enregistrer', class: button_classes %>
+      </div>
     </div>
   </div>
 <% end %>
-
-
-<div class="ce-example">
-  <div class="ce-example__content _ce-example__content--small">
-    <div id="editorjs"></div>
-  </div>
-  <div class="ce-example__output">
-    <pre class="ce-example__output-content" id="output"></pre>
-  </div>
-</div>
-
-<link rel="stylesheet" href="https://raw.githubusercontent.com/codex-team/editor.js/next/public/assets/demo.css" />
 
 <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
 <script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script>
@@ -36,16 +26,22 @@
 var editor = new EditorJS({
   holder: 'editorjs',
   tools: {
-    header: Header,
+    header: {
+      class: Header,
+      config: {
+        placeholder: 'Enter a header',
+        levels: [2, 3],
+        defaultLevel: 2
+      }
+    },
     image: SimpleImage,
     quote: Quote
   },
-  data: <%= raw controversy.data.to_json %>,
+  data: <%= raw controversy.data %>,
   onChange: function (event) {
-    console.log(event);
     editor.save()
       .then((savedData) => {
-        document.getElementById("data").innerHTML = JSON.stringify(savedData);
+        document.getElementById("editorjs-data").innerHTML = JSON.stringify(savedData);
       })
       .catch((error) => {
         console.error('Saving error', error);

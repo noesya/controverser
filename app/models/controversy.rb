@@ -21,9 +21,19 @@ class Controversy < ApplicationRecord
   validates_uniqueness_of :title
   validates_uniqueness_of :slug
 
-  def data
-    JSON.parse attributes['data']
-  end
+  # def data=(value)
+  #   # byebug
+  #   self[:data] = JSON.parse value
+  # end
+
+  # def data
+  #   byebug
+  #   JSON.parse attributes[:data]
+  # # rescue
+  # #   {
+  # #     blocks: []
+  # #   }
+  # end
 
   def to_param
     slug

@@ -1,5 +1,7 @@
 <%= content_for :title, @concept %>
 
+<h1><%= @concept %></h1>
+
 <% if @concept.description.present? %>
   <p><%= @concept.description %></p>
 <% end %>

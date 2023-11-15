@@ -8,6 +8,7 @@ gem "bootstrap"
 gem "bootstrap-icons-helper"
 gem "breadcrumbs_on_rails"
 gem "curation"#, path: '../curation'
+gem "editor_js"
 gem "figaro"
 gem "pg"
 gem "puma"
