@@ -1,29 +1,28 @@
 <%= content_for :title, @controversy %>
 
-<% if @controversy.subtitle.present? %>
-  <h2 class="mb-5 mt-n5"><%= @controversy.subtitle %></h2>
-<% end %>
-
-<div class="row">
-  <div class="offset-lg-2 col-lg-6">
-    <% if @controversy.text.present? %>
-      <div class="mt-5 lead">
-        <%= @controversy.text %>
-      </div>
-    <% end %>
-
-    <div class="my-5 lead">
-      <%= link_to controversy_fragments_path(@controversy), class: 'pe-5' do %>
+<div class="controversy">
+  <h1><%= @controversy %></h1>
+  <% if @controversy.subtitle.present? %>
+    <h2><%= @controversy.subtitle %></h2>
+  <% end %>
+  <div class="row mt-5">
+    <div class="col-lg-2">
+      <%= link_to controversy_fragments_path(@controversy) do %>
         Fragments
         <%= bootstrap_icon "arrow-right" %>
-      <% end %>
+      <% end %><br>
       <%= link_to controversy_concepts_path(@controversy) do %>
         Concepts
         <%= bootstrap_icon "arrow-right" %>
       <% end %>
     </div>
-    
-    <%= link_to "Modifier", edit_controversy_path(@controversy), class: button_classes %>
-  
+    <div class="col-lg-6">
+      <div class="lead">
+        <%= @controversy.data_rendered.html_safe %>
+      </div>
+      <div class="fixed-area">
+        <%= link_to "Modifier", edit_controversy_path(@controversy), class: button_classes %>
+      </div>
+    </div>
   </div>
 </div>

@@ -10,8 +10,8 @@
     <%= favicon_link_tag 'favicon.png' %>
   </head>
   <body>
-    <%= render 'header' %>
-    <main class="container-fluid py-5">
+    <main class="container-fluid">
+      <%= render 'header' %>
       <%= yield %>
     </main>
     <%= render 'footer' %>

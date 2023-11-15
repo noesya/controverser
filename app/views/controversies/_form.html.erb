@@ -2,14 +2,50 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="row">
-    <div class="col-lg-6">
-      <%= f.input :title %>
-      <%= f.input :subtitle %>
-      <%= f.button :submit, 'Enregistrer', class: button_classes %>
-    </div>
-    <div class="col-lg-6">
-      <%= f.input :text, input_html: { rows: 10 } %>
+  <h1><%= f.input_field :title, placeholder: 'Titre' %></h1>
+  <h2><%= f.input_field :subtitle, placeholder: 'Sous-titre' %></h2>
+  <div class="row controversy-editor">
+    <div class="offset-lg-2 col-lg-6">
+      <div class="d-none">
+        <%= f.input :data, input_html: { id: 'editorjs-data' } %>
+      </div>
+      <div id="editorjs"></div>
+      <div class="fixed-area">
+        <%= f.button :submit, 'Enregistrer', class: button_classes %>
+      </div>
     </div>
   </div>
 <% end %>
+
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+
+<script>
+var editor = new EditorJS({
+  holder: 'editorjs',
+  tools: {
+    header: {
+      class: Header,
+      config: {
+        placeholder: 'Enter a header',
+        levels: [2, 3],
+        defaultLevel: 2
+      }
+    },
+    image: SimpleImage,
+    quote: Quote
+  },
+  data: <%= raw controversy.data %>,
+  onChange: function (event) {
+    editor.save()
+      .then((savedData) => {
+        document.getElementById("editorjs-data").innerHTML = JSON.stringify(savedData);
+      })
+      .catch((error) => {
+        console.error('Saving error', error);
+      });
+  }
+});
+</script>

@@ -1,4 +1,4 @@
-<header class="container-fluid pt-4 pb-2">
+<header class="pt-4 pb-2">
   <div class="logo-and-breadcrumbs">
     <%= link_to root_path, class: 'logo' do %>
       <%= image_tag 'logo.svg', alt: 'Controverser' %>
@@ -7,5 +7,4 @@
       <%= render_breadcrumbs separator: ' / ' %>
     </div>
   </div>
-  <h1><%= yield :title %></h1>
 </header>
