@@ -2,14 +2,15 @@
 #
 # Table name: controversies
 #
-#  id         :bigint           not null, primary key
-#  data       :jsonb
-#  slug       :string
-#  subtitle   :string
-#  text       :text
-#  title      :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id            :bigint           not null, primary key
+#  data          :jsonb
+#  data_rendered :text
+#  slug          :string
+#  subtitle      :string
+#  text          :text
+#  title         :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 class Controversy < ApplicationRecord
   include WithSlug
@@ -21,19 +22,7 @@ class Controversy < ApplicationRecord
   validates_uniqueness_of :title
   validates_uniqueness_of :slug
 
-  # def data=(value)
-  #   # byebug
-  #   self[:data] = JSON.parse value
-  # end
-
-  # def data
-  #   byebug
-  #   JSON.parse attributes[:data]
-  # # rescue
-  # #   {
-  # #     blocks: []
-  # #   }
-  # end
+  before_save :render_data
 
   def to_param
     slug
@@ -41,5 +30,12 @@ class Controversy < ApplicationRecord
 
   def to_s
     "#{title}"
+  end
+
+  protected
+  
+  def render_data
+    doc = EditorJs::Document.new data
+    self.data_rendered = doc.render
   end
 end

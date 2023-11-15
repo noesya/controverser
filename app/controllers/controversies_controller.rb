@@ -6,8 +6,6 @@ class ControversiesController < ApplicationController
   end
 
   def show
-    @doc = EditorJs::Document.new @controversy.data
-    @html = @doc.render
     @fragments = @controversy.fragments
   end
 

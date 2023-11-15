@@ -18,7 +18,7 @@
     </div>
     <div class="col-lg-6">
       <div class="lead">
-        <%= @html %>
+        <%= @controversy.data_rendered.html_safe %>
       </div>
       <div class="fixed-area">
         <%= link_to "Modifier", edit_controversy_path(@controversy), class: button_classes %>
