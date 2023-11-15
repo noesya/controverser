@@ -68,6 +68,6 @@ class ControversiesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def controversy_params
-    params.require(:controversy).permit(:title, :subtitle, :text, :slug)
+    params.require(:controversy).permit(:title, :subtitle, :text, :slug, :data)
   end
 end

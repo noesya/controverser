@@ -10,6 +10,7 @@
     </div>
     <div class="col-lg-6">
       <%= f.input :text, input_html: { rows: 10 } %>
+      <%= f.input :data, input_html: { id: 'data' } %>
     </div>
   </div>
 <% end %>
@@ -39,6 +40,16 @@ var editor = new EditorJS({
     image: SimpleImage,
     quote: Quote
   },
-  data: <%= raw controversy.data.to_json %>
+  data: <%= raw controversy.data.to_json %>,
+  onChange: function (event) {
+    console.log(event);
+    editor.save()
+      .then((savedData) => {
+        document.getElementById("data").innerHTML = JSON.stringify(savedData);
+      })
+      .catch((error) => {
+        console.error('Saving error', error);
+      });
+  }
 });
 </script>
