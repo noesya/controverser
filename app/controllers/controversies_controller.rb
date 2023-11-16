@@ -11,6 +11,9 @@ class ControversiesController < ApplicationController
 
   def new
     @controversy = Controversy.new
+    @controversy.data = {
+        blocks: []
+    }.to_json
   end
 
   def edit
