@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.2"
+ruby "3.3.5"
 
 gem "bootsnap", require: false
 gem "bootstrap"
@@ -12,7 +12,7 @@ gem "editor_js"
 gem "figaro"
 gem "pg"
 gem "puma"
-gem "rails", "~> 7.0.8"
+gem "rails", "~> 7.0"
 gem "rails-i18n"
 gem "ruby-openai"
 gem "sassc-rails"
